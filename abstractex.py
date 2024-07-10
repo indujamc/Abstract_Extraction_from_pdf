@@ -38,6 +38,8 @@ if uploaded_file is not None:
         file_text = doc[0].get_text()
 
     extracted_content = extract_content_from_abstract(file_text)
-
-    st.write("Content of Abstract")
-    st.text_area("Abstract", extracted_content, height=300)
+    if abstract_found:
+        st.write("Content of Abstract")
+        st.text_area("Abstract", extracted_content, height=300)
+    else:
+        st.write("No Abstract found in the uploaded PDF.")
