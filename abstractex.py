@@ -1,3 +1,6 @@
+!pip install PyMuPDF
+!pip install nltk
+
 import streamlit as st
 import fitz  # PyMuPDF
 from nltk.tokenize import word_tokenize
