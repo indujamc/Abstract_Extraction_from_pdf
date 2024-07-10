@@ -1,5 +1,5 @@
-!pip install PyMuPDF
-!pip install nltk
+pip install PyMuPDF
+pip install nltk
 
 import streamlit as st
 import fitz  # PyMuPDF
