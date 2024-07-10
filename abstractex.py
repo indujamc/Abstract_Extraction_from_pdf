@@ -1,4 +1,3 @@
-
 import streamlit as st
 import fitz  # PyMuPDF
 from nltk.tokenize import word_tokenize
@@ -27,7 +26,7 @@ def extract_content_from_abstract(file_text):
             elif abstract_found and not heading_found:
                 content.append(line)
 
-    return '\n'.join(content)
+    return '\n'.join(content), abstract_found
 
 st.title("PDF Abstract Extractor")
 
@@ -37,7 +36,8 @@ if uploaded_file is not None:
     with fitz.open(stream=uploaded_file.read(), filetype="pdf") as doc:
         file_text = doc[0].get_text()
 
-    extracted_content = extract_content_from_abstract(file_text)
+    extracted_content, abstract_found = extract_content_from_abstract(file_text)
+
     if abstract_found:
         st.write("Content of Abstract")
         st.text_area("Abstract", extracted_content, height=300)
